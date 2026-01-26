@@ -1,12 +1,14 @@
 # 🚜 Groundskeeper Willie: The Website
 
-### 🔴 **LIVE SITE:** [CLICK HERE TO OPEN](https://devondev00-png.github.io/Groundskeeper-Willie-Web/)
+## 🔴 **LIVE SITE:** [CLICK HERE TO OPEN](https://devondev00-png.github.io/Groundskeeper-Willie-Web/)
 
 ---
 
 > **"A Visual Guide to Your Incompetence"**
 
-This is the front-end dashboard for the [Groundskeeper Willie Security Auditor](https://github.com/devondev00-png/Groundskeeper-Willie).
+This repository contains the **deployed website assets** for the Groundskeeper Willie Security Suite.
+
+> **Created by HUX**
 
 It features:
 
@@ -18,4 +20,4 @@ It features:
 
 Since this is a static site (HTML/CSS/JS), it can be deployed via GitHub Pages or Vercel immediately.
 
-*"Don't look at me like that! Read the charts!"*
+> *"Don't look at me like that! Read the charts!"*
