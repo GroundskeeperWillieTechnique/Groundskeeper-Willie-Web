@@ -1,0 +1,16 @@
+.header {
+    background-color: #fff;
+    padding: 20px !important;
+}
+
+.header {
+    margin: 10px;
+}
+
+.footer {
+    color: grey;
+}
+
+.footer {
+    display: flex;
+}

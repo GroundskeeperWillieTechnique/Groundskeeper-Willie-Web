@@ -7,6 +7,8 @@ from .javascript_analyzer import JavaScriptAnalyzer
 from .solidity_analyzer import SolidityAnalyzer
 from .rust_analyzer import RustAnalyzer
 from .generic_analyzer import GenericAnalyzer
+from .web_analyzer import WebAnalyzer
+from .infra_analyzer import InfraAnalyzer
 
 __all__ = [
     'BaseAnalyzer',
@@ -17,6 +19,8 @@ __all__ = [
     'SolidityAnalyzer',
     'RustAnalyzer',
     'GenericAnalyzer',
+    'WebAnalyzer',
+    'InfraAnalyzer',
 ]
 
 # Language to analyzer mapping
@@ -28,6 +32,13 @@ ANALYZER_MAP = {
     '.tsx': JavaScriptAnalyzer,
     '.sol': SolidityAnalyzer,
     '.rs': RustAnalyzer,
+    '.html': WebAnalyzer,
+    '.htm': WebAnalyzer,
+    '.css': WebAnalyzer,
+    '.env': InfraAnalyzer,
+    '.yml': InfraAnalyzer,
+    '.yaml': InfraAnalyzer,
+    '.json': InfraAnalyzer,
 }
 
 def get_analyzer(file_path: str) -> BaseAnalyzer:
