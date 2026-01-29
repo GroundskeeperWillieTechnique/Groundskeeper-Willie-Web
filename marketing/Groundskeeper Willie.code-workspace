@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../../Downloads/solemn_sojourn"
+		},
+		{
+			"path": "../../../../Downloads/simpsonfont"
+		}
+	],
+	"settings": {
+		"powershell.cwd": "Groundskeeper Willie"
+	}
+}

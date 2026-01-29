@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groundskeeper Willie: The Takeover</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* FONT FACES */
+        @font-face {
+            font-family: 'Simpsonfont';
+            src: url('assets/Simpsonfont.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'SolemnSojourn';
+            src: url('assets/SolemnSojourn.otf') format('opentype');
+        }
+
+        :root {
+            --color-bg: #f5f2e8;
+            /* Antique Paper */
+            --color-primary: #8b4513;
+            --color-accent: #d32f2f;
+            /* Blood Red */
+            --color-glass: rgba(255, 255, 255, 0.7);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            background-image: radial-gradient(#d4c5a9 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .simpsons-font {
+            font-family: 'Simpsonfont', sans-serif;
+        }
+
+        .solemn-font {
+            font-family: 'SolemnSojourn', serif;
+        }
+
+        /* ANIMATIONS */
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(1px, 1px) rotate(0deg);
+            }
+
+            10% {
+                transform: translate(-1px, -2px) rotate(-1deg);
+            }
+
+            20% {
+                transform: translate(-3px, 0px) rotate(1deg);
+            }
+
+            30% {
+                transform: translate(3px, 2px) rotate(0deg);
+            }
+
+            40% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+
+            50% {
+                transform: translate(-1px, 2px) rotate(-1deg);
+            }
+
+            60% {
+                transform: translate(-3px, 1px) rotate(0deg);
+            }
+
+            70% {
+                transform: translate(3px, 1px) rotate(-1deg);
+            }
+
+            80% {
+                transform: translate(-1px, -1px) rotate(1deg);
+            }
+
+            90% {
+                transform: translate(1px, 2px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(1px, -2px) rotate(-1deg);
+            }
+        }
+
+        .animate-enter {
+            animation: slideIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .hover-shake:hover {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+        }
+
+        /* GLASSMORPHISM CARDS */
+        .glass-panel {
+            background: var(--color-glass);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.2);
+            border-color: var(--color-accent);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+            color: white;
+            font-family: 'SolemnSojourn', serif;
+            letter-spacing: 1px;
+            box-shadow: 4px 4px 0px black;
+            transition: all 0.1s;
+        }
+
+        .btn-primary:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+        }
+
+        .highlight-text {
+            background: linear-gradient(120deg, #fbbf24 0%, #fbbf24 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 0.2em;
+            background-position: 0 88%;
+            transition: background-size 0.25s ease-in;
+        }
+
+        .highlight-text:hover {
+            background-size: 100% 88%;
+        }
+
+        .logo-blend {
+            mix-blend-mode: multiply;
+        }
+    </style>
+</head>
+
+<body class="p-4 md:p-8">
+
+    <!-- NAV -->
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 px-4 py-2 md:top-4 md:left-8 md:right-8 md:px-6 md:py-4 md:rounded-xl flex justify-between items-center gap-2 md:gap-4 shadow-lg border-b border-gray-200 bg-white/80 backdrop-blur-md">
+        <div class="flex items-center gap-2 md:gap-4">
+            <img src="assets/logo_v3_smart.png"
+                class="h-10 md:h-24 w-auto object-contain hover:scale-110 transition-transform"
+                alt="Groundskeeper Willie Security Logo">
+            <div>
+                <h1 class="simpsons-font text-lg md:text-4xl text-red-700 tracking-wider">Groundskeeper Willie</h1>
+                <p class="hidden md:block text-[12px] font-mono uppercase tracking-widest text-gray-500">Zero Trust.
+                    Zero Politeness.
+                </p>
+            </div>
+        </div>
+
+        <div class="hidden md:flex gap-6 font-bold text-lg tracking-wide">
+            <a href="manifesto.html" class="hover:text-red-600">MANIFESTO</a>
+            <a href="ralph.html" class="hover:text-red-600">RALPH IS TRASH</a>
+        </div>
+
+        <a href="https://github.com/devondev00-png/Groundskeeper-Willie" target="_blank" rel="noopener noreferrer"
+            class="btn-primary px-3 py-1 md:px-6 md:py-2 text-xs md:text-lg rounded border-2 border-black flex items-center justify-center gap-2">
+            <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                    clip-rule="evenodd" />
+            </svg>
+            <span class="md:hidden">SORT SHIT</span>
+            <span class="hidden md:inline">SORT MY SHIT</span>
+        </a>
+    </nav>
+
+    <!-- HERO -->
+    <main class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24 mt-24 md:mt-40">
+        <div class="animate-enter">
+            <div
+                class="inline-block bg-yellow-400 border-2 border-black px-3 py-1 font-black transform -rotate-2 mb-6 shadow-[4px_4px_0px_black]">
+                V 1.0 "GREASE ME UP"
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black mb-6 leading-[0.9] solemn-font text-gray-900">
+                CODE IS <br>
+                <span class="text-red-700">GUILTY</span> <br>
+                UNTIL PROVEN.
+            </h1>
+            <p class="text-xl text-gray-700 mb-8 max-w-lg leading-relaxed">
+                Most AI assistants are "helpful." They are weak. They let bugs slide because they want to be your
+                friend. <br><br>
+                <span class="font-bold highlight-text cursor-pointer">Groundskeeper Willie hates you.</span> He hates
+                your code. And that is why he is the only one who can save you.
+            </p>
+            <div class="flex gap-4 justify-center md:justify-start lg:justify-center">
+                <a href="https://github.com/devondev00-png/Groundskeeper-Willie#2-grease-me-up-run-the-auditor"
+                    target="_blank" rel="noopener noreferrer"
+                    class="btn-primary px-8 py-4 rounded text-xl border-2 border-black hover-shake flex items-center justify-center min-w-[200px]">
+                    SORT MY SHIT
+                </a>
+            </div>
+        </div>
+
+        <div class="animate-enter delay-100 relative">
+            <div class="absolute -top-10 -right-10 w-full h-full bg-red-600 rounded-full opacity-10 blur-3xl"></div>
+            <img src="assets/hero_warning_final.png"
+                class="relative z-10 w-full glass-panel p-4 rot-2 transform hover:rotate-1 transition-transform duration-500"
+                alt="No Polite AI Warning Sign">
+            <div
+                class="absolute bottom-0 left-0 md:-bottom-6 md:-left-6 bg-white p-4 border-2 border-black shadow-[8px_8px_0px_black] z-20 transform -rotate-3 scale-75 md:scale-100 origin-bottom-left">
+                <p class="simpsons-font text-xl">"I'm Helping!"</p>
+                <p class="text-xs font-mono text-gray-500 mt-2">NO YOU ARE NOT, RALPH.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FEATURES GRID -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 animate-enter delay-200">
+        <div class="glass-panel p-8 relative overflow-hidden group">
+            <div
+                class="absolute -right-10 -top-10 text-9xl text-gray-100 font-black z-0 group-hover:text-red-50 transition-colors">
+                01</div>
+            <h3 class="text-2xl font-bold mb-4 relative z-10 solemn-font text-gray-800">THE SCRUTINY</h3>
+            <p class="text-gray-600 relative z-10">We don't scan for style. We scan for <span
+                    class="text-red-600 font-bold">GREASE</span>. Reentrancy, overflows, and hardcoded keys are hunted
+                down like vermin.</p>
+        </div>
+        <div class="glass-panel p-8 relative overflow-hidden group">
+            <div
+                class="absolute -right-10 -top-10 text-9xl text-gray-100 font-black z-0 group-hover:text-blue-50 transition-colors">
+                02</div>
+            <h3 class="text-2xl font-bold mb-4 relative z-10 solemn-font text-gray-800">THE PATCH</h3>
+            <p class="text-gray-600 relative z-10">Willie doesn't suggest fixes. He applies them. With violent comments
+                attached. <br><code>// Fixed it, ya numpty.</code></p>
+        </div>
+        <div class="glass-panel p-8 relative overflow-hidden group">
+            <div
+                class="absolute -right-10 -top-10 text-9xl text-gray-100 font-black z-0 group-hover:text-orange-50 transition-colors">
+                03</div>
+            <h3 class="text-2xl font-bold mb-4 relative z-10 solemn-font text-gray-800">THE STRESS</h3>
+            <p class="text-gray-600 relative z-10">We fuzz your inputs until the contract screams. If it breaks, we
+                strike you down. If it holds, we grunt in approval.</p>
+        </div>
+    </section>
+
+    <!-- THREAT RADAR -->
+    <section class="glass-panel p-8 mb-24 max-w-4xl mx-auto animate-enter delay-300">
+        <h2 class="text-3xl text-center font-black mb-8 simpsons-font tracking-widest">THREAT COVERAGE DETECTOR</h2>
+        <div class="bg-white rounded-xl p-4 chart-container h-96">
+            <canvas id="threatRadar"></canvas>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-center pb-12 opacity-50 font-mono text-xs animate-enter delay-300">
+        <p>Groundskeeper Willie v1.0 (The Groundskeeper Willie Technique)</p>
+        <p class="font-bold mt-2">CREATED BY HUX</p>
+        <p>"If it's not Scottish, it's CRAP!"</p>
+    </footer>
+
+    <script>
+        // RADAR CHART CONFIG
+        const ctx = document.getElementById('threatRadar').getContext('2d');
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Aggression', 'Math Safety', 'Dependency Checks', 'Politeness', 'Insults/Min', 'Logic Rigor'],
+                datasets: [{
+                    label: 'Groundskeeper Willie',
+                    data: [100, 100, 95, 0, 120, 90],
+                    backgroundColor: 'rgba(211, 47, 47, 0.2)',
+                    borderColor: '#b71c1c',
+                    pointBackgroundColor: '#b71c1c',
+                    borderWidth: 3
+                }, {
+                    label: 'Ralph (Standard AI)',
+                    data: [10, 40, 30, 100, 0, 40],
+                    backgroundColor: 'rgba(100, 100, 100, 0.1)',
+                    borderColor: '#9ca3af',
+                    pointBackgroundColor: '#9ca3af',
+                    borderWidth: 2,
+                    borderDash: [5, 5]
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(0,0,0,0.1)' },
+                        grid: { color: 'rgba(0,0,0,0.05)' },
+                        pointLabels: { font: { family: 'SolemnSojourn', size: 14 } },
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                        ticks: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: { position: 'bottom', labels: { font: { family: 'Inter' } } }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

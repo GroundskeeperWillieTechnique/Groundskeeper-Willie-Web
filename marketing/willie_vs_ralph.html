@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groundskeeper Willie vs. Ralph Wiggum: A Comparative Analysis</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: #fff;
+        }
+
+        h1 {
+            color: #b71c1c;
+            border-bottom: 3px solid #333;
+            padding-bottom: 15px;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            color: #1a1a1a;
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #b71c1c;
+        }
+
+        .date {
+            color: #666;
+            font-style: italic;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .card {
+            border: 2px solid #eee;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .card.ralph {
+            background-color: #f9f9f9;
+            border-color: #e0e0e0;
+        }
+
+        .card.willie {
+            background-color: #fff5f5;
+            border-color: #b71c1c;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .ralph-title {
+            color: #666;
+        }
+
+        .willie-title {
+            color: #b71c1c;
+            font-weight: 900;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .win {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .fail {
+            color: #c62828;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #555;
+            border-left: 4px solid #b71c1c;
+            padding-left: 20px;
+            margin: 30px 0;
+            background: #fafafa;
+            padding: 20px;
+        }
+
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #999;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        /* Print optimizations */
+        @media print {
+            body {
+                padding: 0;
+            }
+
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header-section">
+        <div class="logo">🧹 Groundskeeper Willie Security</div>
+        <div class="date">January 2026 Whitepaper</div>
+    </div>
+
+    <h1>The Code Crisis:<br>Why "Polite" AI is Destroying Software Security</h1>
+
+    <div class="quote">
+        "Most generic AI assistants are designed to be helpful, polite, and unopinionated. In the context of
+        cybersecurity, this is a fatal flaw. You do not want a polite security guard. You want a ruthless one."
+    </div>
+
+    <h2>1. The "Ralph Wiggum" Problem</h2>
+
+    <div class="comparison-grid">
+        <div class="card ralph">
+            <h3 class="ralph-title">🤡 The Polite AI (Ralph)</h3>
+            <p><strong>Philosophy:</strong> "I'm helping!"</p>
+            <p>Generic LLMs (like standard Claude or GPT) prioritize user satisfaction over correctness. They generate
+                code that works immediately but often ignores edge cases.</p>
+            <ul>
+                <li>✅ Writes code fast</li>
+                <li>❌ Uses empty <code>try/catch</code> to hide errors</li>
+                <li>❌ Hardcodes credentials for convenience</li>
+                <li>❌ Leaves "TODO" comments in critical paths</li>
+                <li>❌ Makes up "placeholder" logic</li>
+            </ul>
+        </div>
+        <div class="card willie">
+            <h3 class="willie-title">🧹 Groundskeeper Willie</h3>
+            <p><strong>Philosophy:</strong> "Grease me up!"</p>
+            <p>Willie is a deterministic, regex-based engine designed to hunt down the specific patterns that LLMs
+                generate. He assumes the developer is incompetent until proven otherwise.</p>
+            <ul>
+                <li>✅ <strong>Auto-Fixes</strong> vulnerabilities</li>
+                <li>✅ **Rejects** bad patterns explicitly</li>
+                <li>✅ **No hallucinations** (Rule-based)</li>
+                <li>✅ **19 Language Support** (Tier 1-3)</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>2. Feature Comparison Matrix</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Standard AI (Ralph)</th>
+                <th>Groundskeeper Willie</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Error Handling</strong></td>
+                <td class="fail">Empty catch blocks</td>
+                <td class="win">Proper logging & re-throwing</td>
+            </tr>
+            <tr>
+                <td><strong>Security Awareness</strong></td>
+                <td class="fail">"I cannot verify..." (Refusal)</td>
+                <td class="win">Active Scanning & Fixing</td>
+            </tr>
+            <tr>
+                <td><strong>SQL Injection</strong></td>
+                <td class="fail">Suggests f-strings / interpolation</td>
+                <td class="win">Enforces Parameterized Queries</td>
+            </tr>
+            <tr>
+                <td><strong>Memory Safety</strong></td>
+                <td class="fail">Suggests <code>strcpy</code> (C/C++)</td>
+                <td class="win">Enforces <code>strncpy</code> / Rust</td>
+            </tr>
+            <tr>
+                <td><strong>Attitude</strong></td>
+                <td class="fail">Polite / Apologetic</td>
+                <td class="win">Scottish Rage</td>
+            </tr>
+            <tr>
+                <td><strong>Cost</strong></td>
+                <td class="fail">$20/month per user</td>
+                <td class="win">Open Source (Free)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>3. The "Code Janitor" Methodology</h2>
+
+    <p>Groundskeeper Willie employs a "Janitorial" approach to code security. Unlike auditors that merely generate PDFs
+        of problems, Willie performs "Auto-Fixing".</p>
+
+    <p><strong>Supported Languages (The Janitor's Ring of Keys):</strong></p>
+    <p>
+        <strong>Tier 1 (Core):</strong> Python, JavaScript, TypeScript, Go, Java, C/C++, Rust, Solidity.<br>
+        <strong>Tier 2 (Scripts):</strong> PHP, Ruby, C#, Swift, Kotlin.<br>
+        <strong>Tier 3 (Specialized):</strong> SQL, Shell, Move, Vyper, Cairo.
+    </p>
+
+    <div class="footer">
+        Generated by Groundskeeper Willie Security Suite &copy; 2026<br>
+        <em>"If it's not Scottish, it's CRAP!"</em>
+    </div>
+
+    <script>
+        // Auto-print prompt
+        window.onload = function () {
+            setTimeout(function () {
+                // window.print();
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>
